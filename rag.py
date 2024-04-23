@@ -16,7 +16,7 @@ class ChatPDF:
     chain = None
 
     def __init__(self):
-        self.model = ChatOllama(model="llama2:70b")
+        self.model = ChatOllama(model="mixtral")
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024, chunk_overlap=100)
         self.prompt = PromptTemplate.from_template(
             """
@@ -38,7 +38,7 @@ class ChatPDF:
             search_type="similarity_score_threshold",
             search_kwargs={
                 "k": 3,
-                "score_threshold": 0.5,
+                "score_threshold": 0.1,
             },
         )
 
